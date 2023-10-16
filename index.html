@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+     </head>
+    <div class="frame">
+           
+
+        <div class="div1">
+            <h1>TO DO LIST</h1>
+           
+          <form>
+            <input id="input" type="text" placeholder="Add a new task....">
+            <button id="button" type="submit">Add</button>
+            <div id="div"></div>
+          </form>
+        </div>
+
+
+    </div>
+
+
+
+
+    <script>
+        let input=document.getElementById("input")
+        let button=document.getElementById("button")
+        let div=document.getElementById("div")
+
+        console.log(input);
+        console.log(button);
+        console.log(div);
+
+    button.addEventListener("click", (e)=>{
+        e.preventDefault();
+
+    if(input.value===""){
+        alert("empty");
+    }else{
+        console.log(input.value);
+
+    let para=document.createElement("p")
+    let a=document.createElement("a")
+    a.innerHTML='<i class="fa-solid fa-delete-left"></i>'
+
+    let span=document.createElement("span")
+    span.innerHTML=input.value
+ 
+    let edit=document.createElement("label")
+    edit.innerHTML='<i class="fa-thin fa-pencil"></i>'
+
+    edit.addEventListener("click",function(){
+    let editedvalue=prompt("Edit your task")
+     span.innerHTML=editedvalue;
+    })
+
+    a.addEventListener("click",function(){
+        para.removeChild(a)
+        para.removeChild(edit)
+        div.removeChild(para)
+    })
+
+    para.appendChild(span)
+    para.appendChild(a)
+    para.appendChild(edit)
+    div.appendChild(para)
+
+   input.value=" "
+}
+
+    })
+
+
+
+
+
+    </script>
+
+
+
+
+</body>
+</html>
+<style>
+    *{
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+    }
+    .frame{
+        background-image:linear-gradient(rgb(255, 255, 255),rgb(110, 114, 105)) ;
+
+          height: 100vh;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+    }
+    h1{
+        color: white;
+        text-align: center;
+}
+    
+    .div1{
+        background-color: #1f1f15;
+        height: 202px;
+        width: 460px; 
+        padding: 20px;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    #input{
+        padding: 12px 22px;
+        border-radius: 5px;
+        border: none;
+    }
+    #button{
+        padding: 12px 22px;
+        font-family: sans-serif;
+        background-color: rgb(153, 148, 149);
+        border-radius: 5px;
+        border: none;
+        color: black;
+
+    }
+    p{
+
+    background-color: aliceblue;
+color:black;
+ border-radius: 5px;
+ text-align: center;
+ height: 30px; 
+ border-radius: 5px;
+ margin-top: 15px;
+ display: flex;
+ justify-content: space-between;
+ padding-top: 3px;
+ padding-right: 5px;
+ position: relative;
+ }
+
+ span{
+    margin-left: 8px;
+ }
+a{
+    margin-top: 4px;
+}
+label{
+    position: absolute;
+    right: 25px;
+    top:7px;
+}
+</style>
